@@ -1,6 +1,7 @@
 class Ray {
     constructor(pos, angle) {
         this.pos = pos;
+        this.angle = angle;
         this.dir = new Vector2d(Math.cos(angle), Math.sin(angle));
 
         this.cast = boundary => {

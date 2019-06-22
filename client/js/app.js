@@ -43,14 +43,18 @@ window.onload = () => {
     boundaries.push(new Boundary(new Vector2d(0, 0), new Vector2d(256, 0)));
     boundaries.push(new Boundary(new Vector2d(256, 256), new Vector2d(0, 256)));
     boundaries.push(new Boundary(new Vector2d(256, 256), new Vector2d(256, 0)));
-    boundaries.push(new Boundary(new Vector2d(128, 64), new Vector2d(128, 192)));
-    boundaries.push(new Boundary(new Vector2d(64, 128), new Vector2d(192, 128)));
+    boundaries.push(new Boundary(new Vector2d(64, 64), new Vector2d(192, 64)));
+    boundaries.push(new Boundary(new Vector2d(192, 64), new Vector2d(192, 192)));
+    boundaries.push(new Boundary(new Vector2d(192, 192), new Vector2d(128, 192)));
+    boundaries.push(new Boundary(new Vector2d(128, 192), new Vector2d(128, 128)));
+    boundaries.push(new Boundary(new Vector2d(64, 128), new Vector2d(128, 128)));
+    boundaries.push(new Boundary(new Vector2d(64, 128), new Vector2d(64, 64)));
 
     var topDownDisplay = new TopDownDisplay(boundaries);
     var firstPersonDisplay = new FirstPersonDisplay(boundaries);
 
     var frame = () => {
-        player.act(keys);
+        player.act(keys, boundaries);
         let view = player.calculView(boundaries);
         topDownDisplay.draw(view);
         firstPersonDisplay.draw(view);
